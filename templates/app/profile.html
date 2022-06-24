@@ -103,21 +103,23 @@
                                     href="{% url 'register_page' %}">Register</a></button>
                             <div class="border-dashed-bottom my-4 d-lg-none"></div>
                         </div>
-                        <div class="col ps-2 ps-lg-3"><a class="d-flex align-items-center mb-2"
-                                                         href="{% url 'about_us_page' %}"><span
+                        {% if user.is_authenticated %}
+                            <div class="col ps-2 ps-lg-3"><a class="d-flex align-items-center mb-2"
+                                                             href="{% url 'logout_page' %}"><span
                                 class="fas fa-user-circle fs-3 me-2 text-700" data-fa-transform="grow-2"></span>
                             <div class="flex-1">
-                                <h6 class="mb-0">About comapany </h6>
+                                <h6 class="mb-0">Log out </h6>
                             </div>
                         </a><a class="d-flex align-items-center mb-2" href="https://t.me/mirtazayev"><img
-                                class="align-self-center me-2"
-                                src="{% static 'app/assets/img/logos/g.png' %}"
-                                alt="Generic placeholder image"
-                                width="30"/>
-                            <div class="flex-1">
-                                <h6 class="mb-0">Google</h6>
-                            </div>
-                        </a></div>
+                            class="align-self-center me-2"
+                            src="{% static 'app/assets/img/logos/g.png' %}"
+                            alt="Generic placeholder image"
+                            width="30"/>
+                        <div class="flex-1">
+                            <h6 class="mb-0">Google</h6>
+                        </div>
+                                {% endif %}
+                    </a></div>
                     </div>
                 </div>
             </div>

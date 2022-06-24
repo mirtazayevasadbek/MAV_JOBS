@@ -5,7 +5,7 @@ from django.db.models import (Model,
                               DateTimeField,
                               CharField,
                               Model,
-                              ImageField , EmailField)
+                              ImageField, EmailField, IntegerField)
 
 
 class BaseModel(Model):
@@ -47,7 +47,14 @@ class User(AbstractUser):
 
 
 class Job(BaseModel):
-    title = CharField(max_length=255)
-    job_type = CharField(max_length=255)
+    company_name = CharField(max_length=255)
+    job_title = CharField(max_length=255)
     description = CharField(max_length=2000)
     image = ImageField(upload_to='products/')
+    Company_phone_number = IntegerField()
+    Company_email = CharField(max_length=255)
+    Company_address = CharField(max_length=255)
+    comments = CharField(max_length=255)
+    Company_contact_person = CharField(max_length=255)
+    tasks = CharField(max_length=255)
+    salary = CharField(max_length=255)

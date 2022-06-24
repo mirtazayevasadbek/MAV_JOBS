@@ -22,7 +22,7 @@
 <header id="home">
     <nav id="#navbar" class="navbar navbar-expand-lg position-fixed top-0 w-100 py-3">
         <div class="container">
-{#            <a class="navbar-brand" href="index.html"><img src="{% static 'app/img/logo-blog.png' %}" alt=""></a>#}
+            {#            <a class="navbar-brand" href="index.html"><img src="{% static 'app/img/logo-blog.png' %}" alt=""></a>#}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
@@ -32,7 +32,6 @@
                     <a class="nav-link" href="{% url 'blog_page' %}">Search Job</a>
                     <a class="nav-link" href="{% url 'about_us_page' %}">About us</a>
                     <a class="nav-link" href="{% url 'profile_page' %}">Profile</a>
-
 
 
                 </div>
@@ -65,8 +64,12 @@
                         <h2 class="underscore">about us</h2>
                         <p class="sup-header">Powerful Programmatic Job Advertising Platform
 
-Looking to fill your open positions? Hire Smartly with Jnee!</p>
-                        <p class="">Founded in 2022 by an insightful entrepreneur, MAV JOBS aims to transform the world of recruitment through cutting-edge Programmatic Job Advertising solution, helping recruiters find the best talent and job seekers the right opportunities available through one single global platform. With headquarters in California and offices in various nations, MAV JOBS  conducts business across the globe. </p>
+                            Looking to fill your open positions? Hire Smartly with Jnee!</p>
+                        <p class="">Founded in 2022 by an insightful entrepreneur, MAV JOBS aims to transform the world
+                            of recruitment through cutting-edge Programmatic Job Advertising solution, helping
+                            recruiters find the best talent and job seekers the right opportunities available through
+                            one single global platform. With headquarters in California and offices in various nations,
+                            MAV JOBS conducts business across the globe. </p>
                     </div>
                     <a href="{% url 'blog_page' %}" class="main-button">Let's start </a>
                 </div>
@@ -101,9 +104,16 @@ Looking to fill your open positions? Hire Smartly with Jnee!</p>
                 <p>Marketing</p>
                 <p>IOS Developer</p>
             </div>
+            <div class="footer-item col-md-3">
+                <p class="footer-item-title">Links</p>
+                <a href="{% url 'about_us_page' %}">About Us</a>
+                <a href="{% url 'profile_page' %}">Profile</a>
+
+            </div>
+
             <div class="copyright pt-4 text-center text-muted">
                 <p>&copy; 2022 MAV Jobs | Created by <a href="https://t.me/mirtazayev"
-                                                         title="Asadbek Mirtazayev" target="_blank">Asadbek
+                                                        title="Asadbek Mirtazayev" target="_blank">Asadbek
                     Mirtazayev</a>
                 </p>
             </div>

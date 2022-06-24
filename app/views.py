@@ -1,11 +1,18 @@
+from pipes import Template
+
 from django.contrib import messages
 from django.contrib.auth import login, authenticate
+from django.contrib.auth.views import LogoutView
+from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
+from django.views.generic import FormView, TemplateView
 
-from app.forms import LoginForm, RegisterForm
+from app.forms import LoginForm, RegisterForm, ForgotPasswordForm, send_email
 from app.models import User, Job
+from app.token import account_activation_token
 
 
 class CreateUser(FormView):
@@ -32,7 +39,7 @@ def login_page(request):
             messages.add_message(
                 request,
                 level=messages.ERROR,
-                message='Loginda xatolik'
+                message='Please enter correctly !'
             )
     return render(request, 'app/login.html', {'form': form})
 
@@ -47,13 +54,13 @@ class RegisterPage(FormView):
         messages.add_message(
             self.request,
             level=messages.WARNING,
-            message='Successfully registreted:) '
+            message='You are successfully create user'
         )
         return super().form_valid(form)
 
 
-def logout_page(request):
-    return render(request, 'app/logout.html')
+class LogoutPage(LogoutView):
+    template_name = 'app/logout.html'
 
 
 def blog_page(request):
@@ -78,3 +85,44 @@ def about_us_page(request):
 
 def profile_page(request):
     return render(request, 'app/profile.html')
+
+
+class ForgotPasswordPage(FormView):
+    form_class = ForgotPasswordForm
+    success_url = reverse_lazy('login_page')
+    template_name = 'app/forgot-password.html'
+
+    def form_valid(self, form):
+        send_email(form.data.get('email'), self.request, 'forgot')
+        return super().form_valid(form)
+
+
+class ActivateEmailView(TemplateView):
+    template_name = 'app/comfirm-password.html'
+
+    def get(self, request, *args, **kwargs):
+        uid = kwargs.get('uid')
+        token = kwargs.get('token')
+
+        try:
+            uid = force_str(urlsafe_base64_decode(uid))
+            user = User.objects.get(pk=uid)
+        except Exception as e:
+            print(e)
+            user = None
+        if user is not None and account_activation_token.check_token(user, token):
+            user.is_active = True
+            user.save()
+            login(request, user)
+            messages.add_message(
+                request=request,
+                level=messages.SUCCESS,
+                message="Your account successfully activated!"
+            )
+            return redirect('index')
+        else:
+            return HttpResponse('Activation link is invalid!')
+
+
+def reset_password(request):
+    return render(request, 'app/reset-password.html')
