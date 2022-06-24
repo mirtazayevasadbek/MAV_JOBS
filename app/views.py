@@ -89,7 +89,7 @@ def profile_page(request):
 
 class ForgotPasswordPage(FormView):
     form_class = ForgotPasswordForm
-    success_url = reverse_lazy('index')
+    success_url = reverse_lazy('login_page')
     template_name = 'app/forgot-password.html'
 
     def form_valid(self, form):

@@ -35,10 +35,8 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{% url 'about_us_page' %}">About us</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{% url 'profile_page' %}">Profile</a>
-                    </li>
-
+                    <li class="nav-card-item">
+                        <a class="nav-link" href="{% url 'profile_page' %}">Profile</a>
 
                 </ul>
             </div>
@@ -53,7 +51,7 @@
         <span><i class="far fa-user"></i> {{ jobs_details.job_type }}</span><span><i
             class="far fa-calendar"></i> {{ jobs_details.created_at }}</span><span><i </span>
     </div>
-    <h3> About job : {{ jobs_details.description }}</h3>
+    <h6> About job : {{ jobs_details.description }}</h6>
 
 {% else %}
     <section id="about" class="aboutus">
@@ -85,17 +83,17 @@
 
 {% endif %}
 <footer class="py-5">
-        <div class="container">
+    <div class="container">
         <div class="row">
             <div class="footer-item col-md-3">
-                <p class="footer-item-title"> -- MAV Jobs -- </p>
-                <p>Adress: 63 Aviasozlaar St. Yashnobod,</p>
-                <p> Tashkent, Uzbekistan</p>
-                <p>Phone: + 9989 93 073 23 08 </p>
-                <p>Email: asadbekmirtazayev0@gmail.com</p>
+                <p class="footer-item-title">Logo.co</p>
+                <p>Adress: 135 Barnard St. Brooklyn,</p>
+                <p>NY 10036, United States</p>
+                <p>Phone: 1-400-123-1234</p>
+                <p>Email: example@creativelab.com</p>
             </div>
             <div class="footer-item col-md-3">
-                <p class="footer-item-title"> -- Vacancies -- </p>
+                <p class="footer-item-title">Services</p>
                 <p class="footer-text">Apps Developer</p>
                 <p>Graphic Design</p>
                 <p>Web Developer</p>
@@ -123,7 +121,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
         crossorigin="anonymous"></script>
+<script src="./js/nav-bg.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="js/addshadow.js"></script>
 </body>
 </html>
